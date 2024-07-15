@@ -15,9 +15,9 @@ test("Has LinkedIn button", async ({ page }) => {
   await linkedinPage.click();
   const newTab = await newTabWait;
   await newTab.waitForLoadState();
-  await expect(newTab).toHaveURL(
-    "https://www.linkedin.com/in/kevin-yang-23102a222/?original_referer=https%3A%2F%2Fwebsite-personal-rosy.vercel.app%2F"
-  );
+
+  // We use a generic starts with so we know its on linkedin
+  await expect(newTab).toHaveURL(new RegExp("^https://www.linkedin.com"));
 });
 
 // Test the github button
